@@ -1,14 +1,12 @@
-import {TestBed, async} from '@angular/core/testing';
-import {AppComponent} from './app.component';
-import {ScreenLockModule} from 'ng-screen-lock';
+import { TestBed, async } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+import { ScreenLockModule } from 'ng-screen-lock';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-      imports: [ScreenLockModule]
+      declarations: [AppComponent],
+      imports: [ScreenLockModule],
     }).compileComponents();
   }));
 
@@ -28,6 +26,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ng-screen-lock app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain(
+      'ng-screen-lock app is running!'
+    );
   });
 });

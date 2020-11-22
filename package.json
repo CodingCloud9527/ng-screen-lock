@@ -9,9 +9,19 @@
     "link": "cd ./dist/ng-screen-lock && yarn link && cd ../.. && yarn link ng-screen-lock",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
+    "prettier:write": "prettier --write --ignore-unknown .",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
   "dependencies": {
     "@angular/animations": "~10.0.6",
     "@angular/common": "~10.0.6",
@@ -34,6 +44,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "husky": "^4.3.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -41,10 +52,13 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "lint-staged": "^10.5.1",
     "ng-packagr": "^10.0.0",
+    "prettier": "^2.2.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.9.5"
   }
 }

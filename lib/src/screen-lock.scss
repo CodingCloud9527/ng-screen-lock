@@ -3,34 +3,19 @@
 
   &-mask {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: wheat;
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    animation: mask-in .5s;
+    z-index: 10;
   }
 
   &-content {
     position: relative;
     overflow: hidden;
-  }
-}
-
-
-@keyframes mask-in {
-  0% {
-    transform: translateY(-1200px) scale(0.7);
-    opacity: 0.7;
-  }
-
-  80% {
-    transform: translateY(0px) scale(0.7);
-    opacity: 0.7;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
   }
 }
