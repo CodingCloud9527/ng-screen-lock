@@ -21,7 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-screen-lock-app",
+            "outputPath": "dist/ng-screen-lock-app/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -59,6 +59,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "github-page": {
+              "baseHref": "ng-screen-lock"
             }
           }
         },
@@ -97,7 +100,8 @@
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "e2e/tsconfig.json",
+              "tsconfig.server.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -111,6 +115,54 @@
           "configurations": {
             "production": {
               "devServerTarget": "ng-screen-lock:serve:production"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/ng-screen-lock-app/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "ng-screen-lock:build",
+            "serverTarget": "ng-screen-lock:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-screen-lock:build:production",
+              "serverTarget": "ng-screen-lock:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "ng-screen-lock:build:production",
+            "serverTarget": "ng-screen-lock:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {},
+            "github-page": {
+              "browserTarget": "ng-screen-lock:build:production,github-page"
             }
           }
         }

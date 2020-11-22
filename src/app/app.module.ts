@@ -6,7 +6,10 @@ import { ScreenLockModule } from 'ng-screen-lock';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, ScreenLockModule],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    ScreenLockModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

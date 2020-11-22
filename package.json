@@ -9,8 +9,13 @@
     "link": "cd ./dist/ng-screen-lock && yarn link && cd ../.. && yarn link ng-screen-lock",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
+    "docs": "ng run ng-screen-lock:prerender:github-page  && rm -rf docs && mv  dist/ng-screen-lock-app/browser docs",
     "prettier:write": "prettier --write --ignore-unknown .",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dev:ssr": "ng run ng-screen-lock:serve-ssr",
+    "serve:ssr": "node dist/ng-screen-lock-app/server/main.js",
+    "build:ssr": "ng build --prod && ng run ng-screen-lock:server:production",
+    "prerender": "ng run ng-screen-lock:prerender "
   },
   "husky": {
     "hooks": {
@@ -30,7 +35,10 @@
     "@angular/forms": "~10.0.6",
     "@angular/platform-browser": "~10.0.6",
     "@angular/platform-browser-dynamic": "~10.0.6",
+    "@angular/platform-server": "~10.0.6",
     "@angular/router": "~10.0.6",
+    "@nguniversal/express-engine": "10.0.2",
+    "express": "^4.15.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -40,6 +48,8 @@
     "@angular-devkit/build-ng-packagr": "~0.1000.8",
     "@angular/cli": "~10.0.5",
     "@angular/compiler-cli": "~10.0.6",
+    "@nguniversal/builders": "^10.0.2",
+    "@types/express": "^4.17.0",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
