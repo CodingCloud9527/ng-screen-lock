@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-
-export type PasswordChecker = (password: string) => boolean;
 
 @Component({
   selector: 'screen-lock',
@@ -38,14 +36,19 @@ export type PasswordChecker = (password: string) => boolean;
 export class ScreenLockComponent {
   @Input() lock: boolean;
 
-  @Input() checker: PasswordChecker;
+  @Input() password: string;
+
+  @Output() unlockSuccess = new EventEmitter<void>();
+
+  @Output() unlockFailed = new EventEmitter<string>();
 
   validate(password: string): void {
-    console.log(password);
-    if (this.checker) {
-      const result = this.checker(password);
-      console.log(result);
-      this.lock = result;
+    if (this.password === password) {
+      this.unlockSuccess.emit();
+      this.lock = false;
+    } else {
+      this.unlockFailed.emit(password);
+      this.lock = true;
     }
   }
 }
