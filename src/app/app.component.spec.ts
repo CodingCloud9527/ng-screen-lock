@@ -1,5 +1,6 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed, async} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {ScreenLockModule} from 'ng-screen-lock';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -7,6 +8,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [ScreenLockModule]
     }).compileComponents();
   }));
 
