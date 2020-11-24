@@ -1,12 +1,13 @@
 .screen-lock {
   position: relative;
+  height: 100%;
 
   &-mask {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: wheat;
+    background: #f2f2f2;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -16,6 +17,77 @@
 
   &-content {
     position: relative;
+    height: 100%;
     overflow: hidden;
+  }
+
+  .shake {
+    animation: shake 500ms ease-in-out;
+  }
+
+  &-input-group {
+    display: inline-flex;
+    background: #fff;
+    font-size: 1.5em;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    padding-left: 3px;
+
+    &:focus {
+      border: 1px solid #40a9ff;
+      outline: 0;
+    }
+
+    input {
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &-unlock-icon {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+}
+
+@keyframes shake {
+  0%,
+  25%,
+  50%,
+  75% {
+    transform: translate(0, 0);
+  }
+  5%,
+  30%,
+  55%,
+  80% {
+    transform: translate(-5px, 5px);
+  }
+  10%,
+  35%,
+  60%,
+  85% {
+    transform: translate(-5px, -5px);
+  }
+  15%,
+  40%,
+  65%,
+  90% {
+    transform: translate(5px, 5px);
+  }
+  20%,
+  45%,
+  70%,
+  95% {
+    transform: translate(5px, -5px);
   }
 }
