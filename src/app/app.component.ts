@@ -1,31 +1,50 @@
 import { Component } from '@angular/core';
+import { ScreenLockService } from 'ng-screen-lock';
 
 @Component({
   selector: 'app-root',
   template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <screen-lock [(lock)]="lock" [password]="password">
-      <div class="app">
-        <span>
-          set password to lock screen
-          <input #inputEle type="text" />
-          <button (click)="lockScreen(inputEle.value)">lock</button>
-        </span>
-      </div>
-    </screen-lock>
+    <div class="app">
+      <screen-lock [password]="password" [(lock)]="panelLock">
+        <nz-card
+          nzHoverable
+          [nzBodyStyle]="{
+            display: 'flex',
+            height: '300px',
+            alignItems: 'center'
+          }"
+        >
+          <div class="lock-panel">
+            <input [(ngModel)]="password" nz-input placeholder="set password" />
+            <button
+              [disabled]="!password"
+              nzType="primary"
+              nzSize="small"
+              nz-button
+              (click)="panelLock = true"
+            >
+              lock this panel
+            </button>
+            <button
+              [disabled]="!password"
+              nzType="primary"
+              nzSize="small"
+              nz-button
+              (click)="screenLock.lock({ password: password })"
+            >
+              lock whole screen
+            </button>
+          </div>
+        </nz-card>
+      </screen-lock>
+    </div>
   `,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ng-screen-lock';
+  constructor(public screenLock: ScreenLockService) {}
 
-  lock = false;
+  panelLock = false;
+
   password: string;
-
-  lockScreen(password: string): void {
-    if (password) {
-      this.password = password;
-      this.lock = true;
-    }
-  }
 }

@@ -34,7 +34,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
         </span>
       </span>
     </ng-template>
-    <div class="screen-lock">
+    <div class="screen-lock" [class.screen-lock-full-screen]="fullScreenMode">
       <div class="screen-lock-mask" @mask *ngIf="lock">
         <ng-template [ngTemplateOutlet]="mask"></ng-template>
       </div>
@@ -52,6 +52,8 @@ export class ScreenLockComponent {
   @Input() lock: boolean;
 
   @Output() lockChange = new EventEmitter<boolean>();
+
+  fullScreenMode = false;
 
   @Input() password: string;
 

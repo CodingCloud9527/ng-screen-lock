@@ -1,6 +1,17 @@
+.lock-panel {
+  height: fit-content;
+
+  input {
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-right: 10px;
+  }
+}
+
 .app {
   height: 100%;
-  background: #40a9ff;
   display: flex;
   justify-content: center;
   align-items: center;

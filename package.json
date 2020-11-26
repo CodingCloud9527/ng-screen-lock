@@ -39,6 +39,7 @@
     "@angular/router": "~10.0.6",
     "@nguniversal/express-engine": "10.0.2",
     "express": "^4.15.2",
+    "ng-zorro-antd": "^10.1.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
