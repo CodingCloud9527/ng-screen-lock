@@ -2,7 +2,6 @@ import {
   ApplicationRef,
   ComponentFactoryResolver,
   Injectable,
-  Injector,
   ViewContainerRef,
 } from '@angular/core';
 import { ScreenLockComponent } from './screen-lock.component';
@@ -11,7 +10,6 @@ import { AnimationEvent } from '@angular/animations';
 @Injectable()
 export class ScreenLockService {
   constructor(
-    private injector: Injector,
     private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef
   ) {}
