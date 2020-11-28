@@ -1,6 +1,7 @@
 {
   "name": "ng-screen-lock-app",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "start": "ng serve --port 8080",
     "build": "ng build --prod",

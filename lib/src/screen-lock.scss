@@ -32,17 +32,19 @@
     bottom: 0;
   }
 
-  .shake {
+  &-invalid-password {
     animation: shake 500ms ease-in-out;
   }
 
   &-input-group {
     display: inline-flex;
     background: #fff;
-    font-size: 1.5em;
+    font-size: 1.25em;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     padding-left: 3px;
+
+    align-items: center;
 
     &:focus {
       border: 1px solid #40a9ff;
@@ -59,14 +61,11 @@
   }
 
   &-unlock-icon {
-    display: inline-flex;
-    align-items: center;
     cursor: pointer;
 
-    svg {
-      width: 1em;
-      height: 1em;
-    }
+    content: url('../assets/unlock.svg');
+    width: 1em;
+    height: 1em;
   }
 }
 

@@ -5,13 +5,11 @@ import {
   Injector,
   ViewContainerRef,
 } from '@angular/core';
-import { Subject } from 'rxjs';
 import { ScreenLockComponent } from './screen-lock.component';
+import { AnimationEvent } from '@angular/animations';
 
 @Injectable()
 export class ScreenLockService {
-  private validate$ = new Subject();
-
   constructor(
     private injector: Injector,
     private resolver: ComponentFactoryResolver,
@@ -24,16 +22,36 @@ export class ScreenLockService {
     const viewContainerRef = this.appRef.components[0].injector.get(
       ViewContainerRef
     );
-    console.log(viewContainerRef);
-    const ref = viewContainerRef.createComponent(factory);
-    const { instance } = ref;
+    const componentRef = viewContainerRef.createComponent(factory);
+    const { instance } = componentRef;
     instance.password = option.password;
     instance.lock = true;
     instance.fullScreenMode = true;
-    instance.lockChange.subscribe((_) => setTimeout(() => ref.destroy(), 500));
+
+    const destroySafely = (event: AnimationEvent) => {
+      if (
+        event.phaseName === 'done' &&
+        event.fromState === null &&
+        event.toState === 'void'
+      ) {
+        componentRef.destroy();
+      }
+    };
+
+    instance.maskAnimateCallbacks.push(destroySafely);
+
+    if (option.onSuccess) {
+      instance.onSuccess.subscribe(() => option.onSuccess());
+    }
+
+    if (option.onFailed) {
+      instance.onFailed.subscribe(p => option.onFailed(p));
+    }
   }
 }
 
 export interface LockOption {
   password: string;
+  onSuccess?: () => void;
+  onFailed?: (invalidPassword: string) => void;
 }
