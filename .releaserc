@@ -1,0 +1,32 @@
+{
+  "preset": "angular",
+  "branches": [
+    "master"
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "lib/CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "lib/CHANGELOG.md"
+        ],
+        "message": "chore(release): release ${nextRelease.version} [skip ci]"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false,
+        "pkgRoot": "dist/ng-screen-lock"
+      }
+    ]
+  ]
+}

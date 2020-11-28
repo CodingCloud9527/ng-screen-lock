@@ -1,6 +1,5 @@
 {
   "name": "ng-screen-lock",
-  "version": "0.0.1",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^10.0.14",
