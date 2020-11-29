@@ -10,7 +10,7 @@
     "test": "ng test lib --watch=false --browsers=ChromeHeadless",
     "test:watch": "ng test lib",
     "lint": "ng lint",
-    "docs": "ng run ng-screen-lock:prerender:github-page  && rm -rf docs && mv  dist/ng-screen-lock-app/browser docs",
+    "docs": "./scripts/update_docs.sh",
     "release": "yarn run test && yarn run build:lib && semantic-release --ci false",
     "prettier:write": "prettier --write --ignore-unknown .",
     "e2e": "ng e2e",
