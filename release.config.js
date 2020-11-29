@@ -9,12 +9,7 @@ module.exports = {
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
-    [
-      '@semantic-release/changelog',
-      {
-        changelogFile: 'lib/CHANGELOG.md',
-      },
-    ],
+    '@semantic-release/changelog',
     [
       '@semantic-release/git',
       {
@@ -26,6 +21,12 @@ module.exports = {
       {
         npmPublish: false,
         pkgRoot: 'dist/ng-screen-lock',
+      },
+    ],
+    [
+      '@semantic-release/exec',
+      {
+        prepareCmd: './scripts/prepare_npm.sh',
       },
     ],
   ],
