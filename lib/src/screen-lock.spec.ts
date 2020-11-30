@@ -6,10 +6,11 @@ import {
 import { ApplicationRef, Component } from '@angular/core';
 import { ScreenLockModule } from './screen-lock.module';
 import { ScreenLockService } from './screen-lock.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 it('should component work', fakeAsync(() => {
   TestBed.configureTestingModule({
-    imports: [ScreenLockModule],
+    imports: [ScreenLockModule, BrowserAnimationsModule],
     declarations: [TestScreenLockComponent],
     providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }],
   }).compileComponents();
@@ -36,7 +37,7 @@ it('should component work', fakeAsync(() => {
 
 it('should service work', fakeAsync(() => {
   TestBed.configureTestingModule({
-    imports: [ScreenLockModule],
+    imports: [ScreenLockModule, BrowserAnimationsModule],
     declarations: [TestScreenLockServiceComponent],
     providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }],
   }).compileComponents();
