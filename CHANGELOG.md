@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/CodingCloud9527/ng-screen-lock/compare/v1.0.0...v1.0.1) (2020-11-30)
+
+### Bug Fixes
+
+- avoid repeated import of BrowserAnimationModule ([1da2a68](https://github.com/CodingCloud9527/ng-screen-lock/commit/1da2a68012f30550be227a25f7bc25f559edc0a9))
+
 # 1.0.0 (2020-11-29)
 
 ### Features
