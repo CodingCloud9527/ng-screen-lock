@@ -1,7 +1,7 @@
 [![GitHub license](https://img.shields.io/github/license/CodingCloud9527/ng-screen-lock)](https://github.com/CodingCloud9527/ng-screen-lock/blob/master/LICENSE)
 [![npm package](https://img.shields.io/npm/v/ng-screen-lock/latest)](https://www.npmjs.org/package/ng-screen-lock)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/CodingCloud9527/ng-screen-lock/ci)  
-`ng-screen-lock` is a beautiful component based on angular 2+,provide lock screen ui like `windows` or `MacOS`,you can check this [demo](https://codingcloud9527.github.io/ng-screen-lock/) to preview.
+`ng-screen-lock` is a beautiful component based on angular 2+,provide lock screen ui like `windows` or `MacOS`,you can check this [demo](https://carbonhe.github.io/ng-screen-lock/) to preview.
 
 ## Installation
 
